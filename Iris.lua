@@ -13049,7 +13049,7 @@ Iris.Events = {}
 --[=[
     @within Iris
     @function Init
-    @param parentInstance Instance? -- where Iris will place widgets UIs under, defaulting to [PlayerGui]
+    @param parentInstance Instance? -- where Iris will place widgets UIs under, defaulting to [CoreGui]
     @param eventConnection (RBXScriptSignal | () -> () | false)? -- the event to determine an Iris cycle, defaulting to [Heartbeat]
     @param allowMultipleInits boolean? -- allows subsequent calls 'Iris.Init()' to do nothing rather than error about initialising again, defaulting to false
     @return Iris
@@ -13070,8 +13070,8 @@ function Iris.Init(parentInstance: Instance?, eventConnection: (RBXScriptSignal 
     end
 
     if parentInstance == nil then
-        -- coalesce to playerGui
-        parentInstance = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+        -- coalesce to CoreGui
+        parentInstance = game:GetService("CoreGui")
     end
     if eventConnection == nil then
         -- coalesce to Heartbeat
